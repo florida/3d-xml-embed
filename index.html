@@ -1,0 +1,45 @@
+<HTML>
+<BODY>
+<SCRIPT LANGUAGE="Javascript">
+var playerInstalled = 0;
+MSDetect = "false";
+if (navigator.mimeTypes && navigator.mimeTypes.length)
+
+{
+x = navigator.mimeTypes['application/x-3dxmlplugin'];
+if (x && x.enabledPlugin)
+playerInstalled = 1;
+}
+else
+{
+MSDetect = "true";
+}
+</SCRIPT>
+<SCRIPT LANGUAGE="VBScript">
+on error resume next
+If MSDetect = "true" Then
+If NOT (IsObject(CreateObject("3DXMLPlugin"))) Then
+playerInstalled = 0
+Else
+playerInstalled = 1
+End If
+End If
+</SCRIPT>
+<SCRIPT LANGUAGE="Javascript">
+if (playerInstalled == 0)
+{
+<!-- 3D XML Player is not installed - >
+}
+else
+{
+<!-- 3D XML Player is installed - >
+}
+</SCRIPT>
+
+<object type='application/x-3dxmlplugin' id='3DXMLPluginId'>
+<param name='DocumentFile'
+value='JLL-CHICAGO-ASSEMBLY-A.1.3dxml'>
+</object>
+
+</BODY>
+</HTML>
